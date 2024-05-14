@@ -38,12 +38,6 @@ namespace GestorDeEstudantesT6
             }
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
-            MySqlDataAdapter meuAdaptadorSql = new MySqlDataAdapter();
-            DataTable minhaTabela = new DataTable();
-            MySqlCommand meuComandoSql = new MySqlCommand("", meuBancoDeDados.getConexao);
-        }
+
     }
 }
