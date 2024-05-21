@@ -16,5 +16,10 @@ namespace GestorDeEstudantesT6
         {
             InitializeComponent();
         }
+
+        private void FormMenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
