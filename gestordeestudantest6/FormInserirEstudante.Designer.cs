@@ -217,6 +217,7 @@
             this.ButtonEnviarFoto.TabIndex = 20;
             this.ButtonEnviarFoto.Text = "Enviar Foto";
             this.ButtonEnviarFoto.UseVisualStyleBackColor = true;
+            this.ButtonEnviarFoto.Click += new System.EventHandler(this.ButtonEnviarFoto_Click_1);
             // 
             // ButtonCancelar
             // 
@@ -227,6 +228,7 @@
             this.ButtonCancelar.TabIndex = 21;
             this.ButtonCancelar.Text = "Cancelar";
             this.ButtonCancelar.UseVisualStyleBackColor = true;
+            this.ButtonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click_1);
             // 
             // FormInserirEstudante
             // 

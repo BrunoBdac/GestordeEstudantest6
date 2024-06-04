@@ -51,5 +51,31 @@ namespace GestorDeEstudantesT6
         {
 
         }
+
+        private void ButtonCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ButtonEnviarFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selecionarImagem = new OpenFileDialog();
+            selecionarImagem.Filter = "selecione a foto (*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+
+            selecionarImagem.ShowDialog();
+        }
+
+        private void ButtonEnviarFoto_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog selecionarImagem = new OpenFileDialog();
+            selecionarImagem.Filter = "selecione a foto (*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+
+            selecionarImagem.ShowDialog();
+        }
+
+        private void ButtonCancelar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
