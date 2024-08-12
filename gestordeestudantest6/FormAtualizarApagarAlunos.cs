@@ -11,18 +11,32 @@ using System.Windows.Forms;
 
 namespace GestorDeEstudantesT6
 {
-    public partial class FormInserirEstudante : Form
+    public partial class FormAtualizarApagarAlunos : Form
     {
-        public FormInserirEstudante()
+        public FormAtualizarApagarAlunos()
         {
             InitializeComponent();
         }
 
-        private void buttonCadastrar_Click(object sender, EventArgs e)
+        private void buttonEnviarFoto_Click(object sender, EventArgs e)
+        {
+            // exibe uma janela para procurar a imagem.
+            OpenFileDialog selecionarImagem = new OpenFileDialog();
+
+            selecionarImagem.Filter = "Selecione a foto (*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+
+            if (selecionarImagem.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxFoto.Image = Image.FromFile(selecionarImagem.FileName);
+            }
+        }
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
         {
             // Cria um estudante.
             Estudante estudante = new Estudante();
             // Variáveis auxiliares.
+            int id = Convert.ToInt32(textBoxId.Text); // Converte o texto do TextBox para inteiro.
             string nome = textBoxNome.Text;
             string sobrenome = textBoxSobrenome.Text;
             DateTime nascimento = dateTimePickerNascimento.Value;
@@ -31,7 +45,7 @@ namespace GestorDeEstudantesT6
             string genero = "Feminino";
 
             // Verifica se outro gênero está selecionado.
-            if(radioButtonMasculino.Checked)
+            if (radioButtonMasculino.Checked)
             {
                 genero = "Masculino";
             }
@@ -52,13 +66,13 @@ namespace GestorDeEstudantesT6
             }
             else if (Verificar())
             {
-                pictureBoxFoto.Image.Save(foto, 
+                pictureBoxFoto.Image.Save(foto,
                     pictureBoxFoto.Image.RawFormat);
 
                 if (estudante.inserirEstudante(nome, sobrenome, nascimento,
                     telefone, genero, endereco, foto))
                 {
-                    MessageBox.Show("Novo aluno cadastrado!","Sucesso!", 
+                    MessageBox.Show("Novo aluno cadastrado!", "Sucesso!",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -69,29 +83,25 @@ namespace GestorDeEstudantesT6
             }
             else
             {
-                MessageBox.Show("Campos não preenchidos!", "Erro!", 
+                MessageBox.Show("Campos não preenchidos!", "Erro!",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void buttonEnviarFoto_Click(object sender, EventArgs e)
+        private void buttonApagar_Click(object sender, EventArgs e)
         {
-            // exibe uma janela para procurar a imagem.
-            OpenFileDialog selecionarImagem = new OpenFileDialog();
 
-            selecionarImagem.Filter = "Selecione a foto (*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
-
-            if (selecionarImagem.ShowDialog() == DialogResult.OK)
-            {
-                pictureBoxFoto.Image = Image.FromFile(selecionarImagem.FileName);
-            }
         }
 
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void textBoxId_TextChanged(object sender, EventArgs e)
         {
-            Close();
+
         }
 
+        private void FormAtualizarApagarAlunos_Load(object sender, EventArgs e)
+        {
+
+        }
         bool Verificar()
         {
             if ((textBoxNome.Text.Trim() == "") ||
@@ -106,11 +116,6 @@ namespace GestorDeEstudantesT6
             {
                 return true;
             }
-        }
-
-        private void FormInserirEstudante_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
